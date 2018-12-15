@@ -5,14 +5,17 @@ import requests
 import json
 import datetime
 
-consumer_key = CONSUMER_KEY
-consumer_secret = CONSUMER_SECRET
+def get_oauth_handle():
+  auth = tw.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
+  auth.set_access_token(ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
+  
+  return auth
 
-oauth_token = ACCESS_TOKEN
-oauth_token_secret = ACCESS_TOKEN_SECRET
-auth = tw.OAuthHandler(consumer_key, consumer_secret)
-auth.set_access_token(oauth_token, oauth_token_secret)
+def get_api_instance():
+  auth = get_oauth_handle()
+  return tw.API(auth)
 
-api = tw.API(auth)
-
-tweets = api.search(q="#fire", lang="en", return_json=False)
+def get_tweets_by_keyword(key_word):
+    api = get_api_instance()
+    tweets = api.search(q=key_word, lang="en", return_json=False, following=True)
+    return fit_into_structure(tweets)
