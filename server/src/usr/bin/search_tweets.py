@@ -5,11 +5,11 @@ import requests
 import json
 import datetime
 
-consumer_key = "Rh7NKYaK9LIA4i8blBebqpOKD"
-consumer_secret = "ZzZk11ErIyvS6y70hQzpdXJTZfhe47PFlgTQ32NTbxIq0nDmE6"
+consumer_key = CONSUMER_KEY
+consumer_secret = CONSUMER_SECRET
 
-oauth_token = "1061405509608103936-UW7Hmga3BrqF6TgojuFy7qnygGBCbE"
-oauth_token_secret = "oFyekKXqGgQmXcMUIzDTNvjjIxxvMtyD3jtT9xctOUXki"
+oauth_token = ACCESS_TOKEN
+oauth_token_secret = ACCESS_TOKEN_SECRET
 auth = tw.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(oauth_token, oauth_token_secret)
 
